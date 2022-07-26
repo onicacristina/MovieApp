@@ -23,7 +23,7 @@ class ActorsAdapter(private val actorsList: List<Actor>):
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val actorName: TextView = view.findViewById(R.id.tv_name)
-        val starIcon :ImageView = view.findViewById(R.id.star)
+        val photoActor :ImageView = view.findViewById(R.id.iv_photo_actor)
         val parentView: ConstraintLayout = view.findViewById(R.id.parent)
     }
 
@@ -37,18 +37,30 @@ class ActorsAdapter(private val actorsList: List<Actor>):
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val actor = actorsList[position]
         holder.actorName.text = actor.name
-        Glide.with(holder.starIcon.context).load(IMAGE_URL + actor.photo).into(holder.starIcon)
+        Glide.with(holder.photoActor.context).load(IMAGE_URL + actor.photo).into(holder.photoActor)
+
+        selectActor(holder, actor)
 
         holder.parentView.setOnClickListener {
             actor.isSelected = !actor.isSelected
-            holder.parentView.setBackgroundColor(
-                when(actor.isSelected){
-                    true -> ContextCompat.getColor(holder.parentView.context,R.color.gray_100)
-                    else -> ContextCompat.getColor(holder.parentView.context,R.color.white)
-                }
-            )
+            selectActor(holder, actor)
+//            holder.parentView.setBackgroundColor(
+//                when(actor.isSelected){
+//                    true -> ContextCompat.getColor(holder.parentView.context,R.color.gray_100)
+//                    else -> ContextCompat.getColor(holder.parentView.context,R.color.white)
+//                }
+//            )
         }
 
+    }
+
+    private fun selectActor(holder: ViewHolder,  actor: Actor){
+        holder.parentView.setBackgroundColor(
+            when(actor.isSelected){
+                true -> ContextCompat.getColor(holder.parentView.context,R.color.gray_100)
+                else -> ContextCompat.getColor(holder.parentView.context,R.color.white)
+            }
+        )
     }
 
     override fun getItemCount() = actorsList.size

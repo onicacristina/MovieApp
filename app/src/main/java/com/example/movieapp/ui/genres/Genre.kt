@@ -18,3 +18,10 @@ data class Genre(
     @ColumnInfo(name = "isSelected")
     var isSelected: Boolean
 )
+{
+    override fun equals(other: Any?) = (other is Genre) && id == other.id
+
+    override fun toString(): String {
+        return "Genre(id=$id, name='$name', isSelected=$isSelected)"
+    }
+}

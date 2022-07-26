@@ -8,29 +8,27 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
-        android:id="@+id/star"
+        android:id="@+id/iv_photo_actor"
         android:layout_width="140dp"
         android:layout_height="173dp"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="123dp"
         android:src="@drawable/ic_baseline_star_24"
-        app:layout_constraintEnd_toStartOf="@+id/tv_name"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_width="144dp"
+        android:layout_height="64dp"
         android:paddingVertical="10dp"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.596"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toEndOf="@+id/iv_photo_actor"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.495"
         tools:text="Action" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

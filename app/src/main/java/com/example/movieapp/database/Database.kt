@@ -3,6 +3,8 @@ package com.example.movieapp.database
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.movieapp.ui.actors.Actor
+import com.example.movieapp.ui.actors.ActorDAO
 import com.example.movieapp.ui.genres.Genre
 import com.example.movieapp.ui.genres.GenreDAO
 
@@ -12,12 +14,13 @@ class Database private constructor() {
     }
 
     @androidx.room.Database(
-        entities = [Genre::class],
-        version = 0
+        entities = [Genre::class, Actor::class],
+        version = 2
     )
 
     abstract class MovieAppDatabase: RoomDatabase(){
         abstract fun genresDao(): GenreDAO
+        abstract fun actorsDao(): ActorDAO
     }
 
     lateinit var movieAppDatabase: MovieAppDatabase
