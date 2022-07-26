@@ -3,4 +3,15 @@
     <string name="splash_title">MovieApp</string>
     <string name="actors_btn_text">Actors</string>
     <string name="genres_btn_text">Genres</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">MovieApp</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_search_movie">Search Movies</string>
+    <string name="menu_saved_movie">Saved Movies</string>
+
 </resources>

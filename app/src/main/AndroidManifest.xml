@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.movieapp">
+
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".app.App"
@@ -16,6 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieApp"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.searchScreen.SearchActivity"
+            android:exported="false"
+            android:label="@string/title_activity_search"
+            android:theme="@style/Theme.MovieApp.NoActionBar" />
         <activity
             android:name=".ui.actors.ActorsSecreenActivity"
             android:exported="false" />
@@ -31,7 +37,7 @@
         <activity
             android:name=".ui.splashScreen.SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" >
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
