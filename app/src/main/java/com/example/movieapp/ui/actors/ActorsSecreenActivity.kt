@@ -5,8 +5,6 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.R
-import com.example.movieapp.ui.genres.Genre
-import com.example.movieapp.ui.genres.GenresAdapter
 import com.example.movieapp.ui.onBoardingScreen.OnBoardingScreenActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Dispatchers
@@ -37,7 +35,7 @@ class ActorsSecreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_actors_secreen)
+        setContentView(R.layout.activity_actors_screen)
 
         setOnClickListeners()
         getActors()

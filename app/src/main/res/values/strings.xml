@@ -13,5 +13,7 @@
 
     <string name="menu_search_movie">Search Movies</string>
     <string name="menu_saved_movie">Saved Movies</string>
+    <string name="movie_title">Movie Title (release date)</string>
+    <string name="movie_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
 
 </resources>

@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MovieApp/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.167" />
         <entry key="..\:/MovieApp/app/src/main/res/drawable/ic_menu_camera.xml" value="0.1" />
         <entry key="..\:/MovieApp/app/src/main/res/drawable/onboarding_bg.xml" value="0.2485" />
         <entry key="..\:/MovieApp/app/src/main/res/drawable/round_btn.xml" value="0.2485" />
+        <entry key="..\:/MovieApp/app/src/main/res/layout/activity_actors_screen.xml" value="0.1" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/activity_actors_secreen.xml" value="0.2" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/activity_genres_screen.xml" value="0.1" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/activity_movie_details_screen.xml" value="0.264" />
@@ -13,8 +15,10 @@
         <entry key="..\:/MovieApp/app/src/main/res/layout/activity_search.xml" value="0.1" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/content_search.xml" value="0.25416666666666665" />
+        <entry key="..\:/MovieApp/app/src/main/res/layout/fragment_search_movies.xml" value="0.24452554744525548" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/item_actors.xml" value="0.2578125" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/item_genre.xml" value="0.1" />
+        <entry key="..\:/MovieApp/app/src/main/res/layout/item_movie.xml" value="0.264" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/nav_header_search.xml" value="0.1" />
         <entry key="..\:/MovieApp/app/src/main/res/menu/activity_main_drawer.xml" value="0.264" />
         <entry key="..\:/MovieApp/app/src/main/res/menu/search.xml" value="0.2" />
