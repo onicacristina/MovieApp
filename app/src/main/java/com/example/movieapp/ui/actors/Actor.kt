@@ -16,7 +16,7 @@ class Actor (
     var name: String,
 
     @ColumnInfo(name = "photo")
-    var photo: String,
+    var photo: String?,
 
     @ColumnInfo(name = "isSelected")
     var isSelected: Boolean

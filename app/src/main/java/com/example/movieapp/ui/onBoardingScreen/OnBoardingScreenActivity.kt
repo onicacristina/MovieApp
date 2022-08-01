@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.movieapp.R
-import com.example.movieapp.ui.actors.ActorsSecreenActivity
+import com.example.movieapp.ui.actors.ActorsScreenActivity
 import com.example.movieapp.ui.genres.GenresScreenActivity
 
 class OnBoardingScreenActivity : AppCompatActivity() {
@@ -26,7 +26,7 @@ class OnBoardingScreenActivity : AppCompatActivity() {
         }
 
         actorsButton.setOnClickListener {
-            startActivity(Intent(this, ActorsSecreenActivity::class.java))
+            startActivity(Intent(this, ActorsScreenActivity::class.java))
         }
     }
 

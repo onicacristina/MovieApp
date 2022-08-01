@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager.widget.ViewPager
 import com.example.movieapp.databinding.FragmentSavedMoviesBinding
+import com.example.movieapp.ui.tab_activity.ui.main.SectionsPagerAdapter
+import com.google.android.material.tabs.TabLayout
 
 
 class SavedMoviesFragment : Fragment() {
@@ -29,11 +32,17 @@ class SavedMoviesFragment : Fragment() {
         _binding = FragmentSavedMoviesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textGallery
-        galleryViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val sectionsPagerAdapter = SectionsPagerAdapter(requireContext(), childFragmentManager)
+        val viewPager: ViewPager = binding.viewPager
+        viewPager.adapter = sectionsPagerAdapter
+        val tabs: TabLayout = binding.tabs
+        tabs.setupWithViewPager(viewPager)
     }
 
     override fun onDestroyView() {

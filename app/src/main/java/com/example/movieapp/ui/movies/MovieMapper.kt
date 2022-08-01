@@ -7,10 +7,12 @@ class MovieMapper {
             id = movieResponse.id,
             title = movieResponse.title,
             adult = movieResponse.adult,
-            poster_path = movieResponse.poster_path,
+            poster_path = movieResponse?.poster_path,
             overview = movieResponse.overview,
-            backdrop_path = movieResponse.backdrop_path,
-            release_date = movieResponse.release_date
+            backdrop_path = movieResponse?.backdrop_path,
+            release_date = movieResponse?.release_date,
+            isSaved = false,
+            isWatched = false
         )
     }
 }

@@ -1,36 +1,34 @@
 package com.example.movieapp.ui.movies
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 import com.example.movieapp.ui.actors.Actor
 
+@Dao
 interface MovieDAO {
-//    @Query("SELECT * FROM actors")
-//    fun getAll(): List<Actor>
-//
-//    @Insert
-//    fun save(actor: Actor)
-//
-//    @Insert
-//    fun saveAll(actors: List<Actor>)
-//
-//    @Delete
-//    fun delete(actor: Actor)
-//
-//    @Delete
-//    fun deleteAll(actors: List<Actor>)
-//
-//    @Query("DELETE FROM actors")
-//    fun deleteAll()
-//
-//    @Transaction
-//    fun replaceAll(actors: List<Actor>){
-//        deleteAll()
-//        saveAll(actors)
-//    }
-//
-//    @Query("SELECT COUNT(id) FROM actors")
-//    fun getCount(): Int
+    @Query("SELECT * FROM movies")
+    fun getAll(): List<Movie>
+
+    @Insert
+    fun save(movie: Movie)
+
+    @Insert
+    fun saveAll(movies: List<Movie>)
+
+    @Delete
+    fun delete(movies: Movie)
+
+    @Delete
+    fun deleteAll(movies: List<Movie>)
+
+    @Query("DELETE FROM movies")
+    fun deleteAll()
+
+    @Transaction
+    fun replaceAll(movies: List<Movie>){
+        deleteAll()
+        saveAll(movies)
+    }
+
+    @Query("SELECT COUNT(id) FROM movies")
+    fun getCount(): Int
 }

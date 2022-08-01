@@ -12,7 +12,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ActorsSecreenActivity : AppCompatActivity() {
+class ActorsScreenActivity : AppCompatActivity() {
 
     private var actors: List<Actor> = emptyList()
     private val actorsRepository = ActorRepository.instance
@@ -24,13 +24,6 @@ class ActorsSecreenActivity : AppCompatActivity() {
                 preselectSaveActors()
             }
         }
-//        actors = listOf(
-//            Actor(0, " Robert De Niro", false),
-//            Actor(0, " Jack Nicholson", false),
-//            Actor(0, " Marlon Brando", false),
-//            Actor(0, " Katharine Hepburn", false)
-//        )
-//        setupRecyclerView()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

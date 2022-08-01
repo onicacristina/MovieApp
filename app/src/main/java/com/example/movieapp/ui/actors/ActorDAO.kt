@@ -32,4 +32,7 @@ interface ActorDAO {
     @Query("SELECT COUNT(id) FROM actors")
     fun getCount(): Int
 
+    @Query("SELECT id FROM actors")
+    fun getAllIds() : List<Int>
+
 }
