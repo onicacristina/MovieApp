@@ -1,5 +1,6 @@
 package com.example.movieapp.ui.movies
 
+import android.telecom.Call
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,15 +9,21 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
-import com.example.movieapp.utils.Constants.IMAGE_URL
+import com.example.movieapp.ui.movieDetails.DetailsViewModel
+import com.example.movieapp.ui.movieDetails.MovieDetailsFragment
 import com.example.movieapp.utils.Constants.IMAGE_URL_MOVIE
-import org.w3c.dom.Text
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class MovieAdapter(private val movieList: List<Movie>):
+class MovieAdapter(private val movieList: List<Movie>,
+                   listener: ItemClickListener,
+                   private val detailsCallBack: (() ->Unit)?,
+                    private val viewModel: DetailsViewModel):
     RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
@@ -26,7 +33,15 @@ class MovieAdapter(private val movieList: List<Movie>):
             val moviePhoto: ImageView = view.findViewById(R.id.iv_movie)
             val savedMovieIcon: ImageButton = view.findViewById(R.id.ib_saved_movie)
             val watchedMovieIcon: ImageButton = view.findViewById(R.id.ib_watched_movie)
+
+            val favorite: Boolean = false
+            val watched: Boolean = false
+
         }
+
+    var listener : ItemClickListener ?= null
+    private var movieRepository = MovieRepository.instance
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -42,23 +57,38 @@ class MovieAdapter(private val movieList: List<Movie>):
         if(movie.backdrop_path!=null)
         Glide.with(holder.moviePhoto.context).load(IMAGE_URL_MOVIE + movie.poster_path).into(holder.moviePhoto)
 
+        val item = getItemId(position)
+
+        selectSavedMovie(holder, movie)
         holder.savedMovieIcon.setOnClickListener{
             movie.isSaved = !movie.isSaved
             selectSavedMovie(holder, movie)
-//            Log.v("SearchMoviesFragment", ""+movie.isSaved );
-
+            insertOrReplaceMovie(movie)
+            Log.v("SearchMoviesFragment", "saved" + movie.isSaved +" " + movie.id);
         }
 
+        selectWatchedMovie(holder, movie)
         holder.watchedMovieIcon.setOnClickListener {
             movie.isWatched = !movie.isWatched
             selectWatchedMovie(holder, movie)
+            insertOrReplaceMovie(movie)
+            Log.v("SearchMoviesFragment", "watched " + movie.isWatched +" " + movie.id);
         }
 
-        //holder.parentView.setOnClickListener{}
+        holder.parentView.setOnClickListener{
+            viewModel.setCurrentMovie(movie)
+            detailsCallBack?.invoke()
+        }
+    }
 
+    private fun insertOrReplaceMovie(movie: Movie){
+        GlobalScope.launch(Dispatchers.IO) {
+            movieRepository.insertOrReplace(movie)
+        }
     }
 
     private fun selectSavedMovie(holder: ViewHolder, movie: Movie){
+
         holder.savedMovieIcon.setImageResource(
             when(movie.isSaved){
                 true -> R.drawable.ic_baseline_favorite_24

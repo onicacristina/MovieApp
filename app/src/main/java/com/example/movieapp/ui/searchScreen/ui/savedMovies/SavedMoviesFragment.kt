@@ -8,14 +8,21 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.example.movieapp.databinding.FragmentSavedMoviesBinding
+import com.example.movieapp.ui.tab_activity.ui.main.PlaceholderFragment
 import com.example.movieapp.ui.tab_activity.ui.main.SectionsPagerAdapter
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 
 class SavedMoviesFragment : Fragment() {
 
+    private val tabTitles = arrayOf("Favorite", "Watched")
+
     private var _binding: FragmentSavedMoviesBinding? = null
+
+    private var adapter: AdapterTAbbedPager? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -38,11 +45,17 @@ class SavedMoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val sectionsPagerAdapter = SectionsPagerAdapter(requireContext(), childFragmentManager)
-        val viewPager: ViewPager = binding.viewPager
-        viewPager.adapter = sectionsPagerAdapter
+        val viewPager: ViewPager2 = binding.viewPager
+        adapter = activity?.let { AdapterTAbbedPager(it) }
+        adapter?.addFragment(FavoriteFragment(), tabTitles[0])
+        adapter?.addFragment(WatchedFragment(), tabTitles[1])
+
+        viewPager.adapter = adapter
         val tabs: TabLayout = binding.tabs
-        tabs.setupWithViewPager(viewPager)
+
+        TabLayoutMediator(tabs, viewPager) { tab, position ->
+            tab.text = adapter?.getTitle(position)
+        }.attach()
     }
 
     override fun onDestroyView() {

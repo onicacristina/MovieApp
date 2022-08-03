@@ -35,38 +35,10 @@ class GenresAdapter(private val genresList: List<Genre>) :
         holder.parentView.setOnClickListener {
             genre.isSelected = !genre.isSelected
             selectGenre(holder, genre)
-
-//            holder.parentView.setBackgroundColor(
-//                when (genre.isSelected) {
-//                    true -> ContextCompat.getColor(holder.parentView.context, R.color.gray_101)
-//                    else -> when (position % 2 == 0) {
-//                        true -> ContextCompat.getColor(holder.parentView.context, R.color.gray_100)
-//                        else -> ContextCompat.getColor(holder.parentView.context, R.color.white)
-//                    }
-//                }
-//            )
-//            holder.starIcon.visibility= (when(genre.isSelected){
-//                true -> View.VISIBLE
-//                else -> View.INVISIBLE
-//            })
         }
     }
 
     private fun selectGenre(holder: ViewHolder, genre: Genre){
-//        holder.parentView.setBackgroundColor(
-//            when (genre.isSelected) {
-//                true -> ContextCompat.getColor(holder.parentView.context, R.color.gray_101)
-//                else -> when (position % 2 == 0) {
-//                    true -> ContextCompat.getColor(holder.parentView.context, R.color.gray_100)
-//                    else -> ContextCompat.getColor(holder.parentView.context, R.color.white)
-//                }
-//            }
-//        )
-//        holder.starIcon.visibility= (when(genre.isSelected){
-//            true -> View.VISIBLE
-//            else -> View.INVISIBLE
-//        })
-
         holder.parentView.setBackgroundColor(when(genre.isSelected){
             true -> ContextCompat.getColor(holder.parentView.context, R.color.gray_100)
             else -> ContextCompat.getColor(holder.parentView.context, R.color.white)

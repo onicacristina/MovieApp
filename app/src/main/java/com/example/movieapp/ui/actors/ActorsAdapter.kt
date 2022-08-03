@@ -44,12 +44,6 @@ class ActorsAdapter(private val actorsList: List<Actor>):
         holder.parentView.setOnClickListener {
             actor.isSelected = !actor.isSelected
             selectActor(holder, actor)
-//            holder.parentView.setBackgroundColor(
-//                when(actor.isSelected){
-//                    true -> ContextCompat.getColor(holder.parentView.context,R.color.gray_100)
-//                    else -> ContextCompat.getColor(holder.parentView.context,R.color.white)
-//                }
-//            )
         }
 
     }

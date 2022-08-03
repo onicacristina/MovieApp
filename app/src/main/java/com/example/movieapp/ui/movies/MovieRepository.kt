@@ -21,13 +21,16 @@ class MovieRepository private constructor() {
         return searchedMovie
     }
 
-    fun getAllLocalActors() = movieLocalDataSource.getAll()
-    fun saveLocal(actor: Movie) = movieLocalDataSource.save(actor)
-    fun saveAllLocal(actors: List<Movie>) = movieLocalDataSource.saveAll(actors)
-    fun deleteLocal(actor: Movie) = movieLocalDataSource.delete(actor)
+    fun getAllLocalMovies() = movieLocalDataSource.getAll()
+    fun saveLocal(movie: Movie) = movieLocalDataSource.save(movie)
+    fun saveAllLocal(movies: List<Movie>) = movieLocalDataSource.saveAll(movies)
+    fun deleteLocal(movie: Movie) = movieLocalDataSource.delete(movie)
     fun deleteAllLocal() = movieLocalDataSource.deleteAll()
-    fun deleteAllLocal(actors: List<Movie>) = movieLocalDataSource.deleteAll(actors)
-    fun replaceAllLocal(actors: List<Movie>) = movieLocalDataSource.replaceAll(actors)
+    fun deleteAllLocal(movies: List<Movie>) = movieLocalDataSource.deleteAll(movies)
+    fun replaceAllLocal(movies: List<Movie>) = movieLocalDataSource.replaceAll(movies)
     fun getCount() = movieLocalDataSource.getCount()
+    fun getSavedMovies() = movieLocalDataSource.getSavedMovies()
+    fun getWatchedMovies() = movieLocalDataSource.getWatchedMovies()
+    fun insertOrReplace(movie: Movie) = movieLocalDataSource.insertOrUpdate(movie)
 
 }

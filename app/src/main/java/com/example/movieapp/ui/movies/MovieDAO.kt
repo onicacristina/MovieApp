@@ -8,7 +8,8 @@ interface MovieDAO {
     @Query("SELECT * FROM movies")
     fun getAll(): List<Movie>
 
-    @Insert
+
+    @Update
     fun save(movie: Movie)
 
     @Insert
@@ -31,4 +32,22 @@ interface MovieDAO {
 
     @Query("SELECT COUNT(id) FROM movies")
     fun getCount(): Int
+
+    @Query("SELECT * FROM movies WHERE isSaved==1")
+    fun getSavedMovies(): List<Movie>
+
+    @Query("SELECT * FROM movies WHERE isWatched==1")
+    fun getWatchedMovies(): List<Movie>
+
+    @Transaction
+    fun insertOrUpdateMovie(movie: Movie) {
+        insertChooseCategories(movie)
+        updateChooseCategories(movie)
+    }
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertChooseCategories(movie: Movie)
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    fun updateChooseCategories(movie: Movie)
 }

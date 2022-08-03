@@ -18,7 +18,10 @@
         <entry key="..\:/MovieApp/app/src/main/res/layout/activity_tabbed_main.xml" value="0.264" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/app_bar_search.xml" value="0.25416666666666665" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/content_search.xml" value="0.25416666666666665" />
-        <entry key="..\:/MovieApp/app/src/main/res/layout/fragment_saved_movies.xml" value="0.25416666666666665" />
+        <entry key="..\:/MovieApp/app/src/main/res/layout/favorite_watched_list.xml" value="0.1" />
+        <entry key="..\:/MovieApp/app/src/main/res/layout/fragment_favorite_list.xml" value="0.1" />
+        <entry key="..\:/MovieApp/app/src/main/res/layout/fragment_movie_details.xml" value="0.128099173553719" />
+        <entry key="..\:/MovieApp/app/src/main/res/layout/fragment_saved_movies.xml" value="0.1" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/fragment_search_movies.xml" value="0.25" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/fragment_slideshow.xml" value="0.25416666666666665" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/fragment_tabbed_main.xml" value="0.1" />

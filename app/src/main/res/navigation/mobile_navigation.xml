@@ -17,5 +17,10 @@
         android:label="@string/menu_saved_movie"
         tools:layout="@layout/fragment_saved_movies" />
 
+    <fragment
+        android:id="@+id/movie_details"
+        android:name="com.example.movieapp.ui.movieDetails.MovieDetailsFragment"
+        tools:layout="@layout/fragment_movie_details" />
+
 
 </navigation>

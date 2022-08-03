@@ -52,7 +52,6 @@ class GenresScreenActivity : AppCompatActivity() {
 
     private fun saveGenres() {
         GlobalScope.launch(Dispatchers.IO) {
-            //genresRepository.replaceAllLocal(getSelectedGenres())
             genresRepository.deleteAllLocal()
             genresRepository.saveAllLocal(getSelectedGenres())
         }
