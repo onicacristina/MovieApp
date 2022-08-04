@@ -26,8 +26,7 @@ class MovieDetailsResponse (
     @SerializedName("release_date")
     var release_date: String?,
 
-    @SerializedName("results")
-    var videos: List<Video>,
+    var videos: VideoListResponse,
 
     @SerializedName("genres")
     var genres: List<Genre>,

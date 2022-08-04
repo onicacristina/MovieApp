@@ -7,6 +7,7 @@ import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.example.movieapp.database.conevrtors.GenreConvertor
 import com.example.movieapp.database.conevrtors.VideoConvertor
+import com.example.movieapp.database.conevrtors.VideoListConvertor
 import com.example.movieapp.ui.actors.Actor
 import com.example.movieapp.ui.actors.ActorDAO
 import com.example.movieapp.ui.genres.Genre
@@ -14,6 +15,7 @@ import com.example.movieapp.ui.genres.GenreDAO
 import com.example.movieapp.ui.movieDetails.MovieDetails
 import com.example.movieapp.ui.movieDetails.MovieDetailsDAO
 import com.example.movieapp.ui.movieDetails.Video
+import com.example.movieapp.ui.movieDetails.VideoListResponse
 import com.example.movieapp.ui.movies.Movie
 import com.example.movieapp.ui.movies.MovieDAO
 
@@ -24,14 +26,14 @@ class Database private constructor() {
 
 
     @androidx.room.Database(
-        entities = [Genre::class, Actor::class, Movie::class, MovieDetails::class, Video::class],
+        entities = [Genre::class, Actor::class, Movie::class, MovieDetails::class, Video::class, VideoListResponse::class],
         version = 3
     )
 
     @TypeConverters(
         value=[ VideoConvertor::class,
-        GenreConvertor::class
-
+        GenreConvertor::class,
+        VideoListConvertor::class
         ]
     )
 

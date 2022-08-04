@@ -2,6 +2,7 @@ package com.example.movieapp.ui.movieDetails
 
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.movieapp.ui.genres.Genre
@@ -33,8 +34,7 @@ data class MovieDetails (
     @ColumnInfo(name = "release_date")
     var release_date: String?,
 
-
-    var videos: List<Video>,
+    var videos: VideoListResponse?,
 
     var genres: List<Genre>,
 

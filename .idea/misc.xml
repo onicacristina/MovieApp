@@ -20,13 +20,14 @@
         <entry key="..\:/MovieApp/app/src/main/res/layout/content_search.xml" value="0.25416666666666665" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/favorite_watched_list.xml" value="0.1" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/fragment_favorite_list.xml" value="0.1" />
-        <entry key="..\:/MovieApp/app/src/main/res/layout/fragment_movie_details.xml" value="0.128099173553719" />
+        <entry key="..\:/MovieApp/app/src/main/res/layout/fragment_movie_details.xml" value="0.1712962962962963" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/fragment_saved_movies.xml" value="0.1" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/fragment_search_movies.xml" value="0.25" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/fragment_slideshow.xml" value="0.25416666666666665" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/fragment_tabbed_main.xml" value="0.1" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/item_actors.xml" value="0.2578125" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/item_genre.xml" value="0.1" />
+        <entry key="..\:/MovieApp/app/src/main/res/layout/item_genres_movie.xml" value="0.2" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/item_movie.xml" value="0.2" />
         <entry key="..\:/MovieApp/app/src/main/res/layout/nav_header_search.xml" value="0.2" />
         <entry key="..\:/MovieApp/app/src/main/res/menu/activity_main_drawer.xml" value="0.264" />

@@ -10,7 +10,7 @@ class MovieDetailsRemoteDataSource (retrofit: Retrofit) {
 
 
     fun getMovieDetails(movieId: Int): MovieDetails {
-        return apiService.getMovieDetails(Constants.API_KEY, Constants.LANGUAGE, "videos", movieId)
+        return apiService.getMovieDetails( movieId, Constants.API_KEY, Constants.LANGUAGE, "videos")
             .executeAndDeliver()
             .let { this.movieDetailsMapper.map(it) }    }
 

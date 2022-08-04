@@ -15,10 +15,12 @@ import com.bumptech.glide.Glide
 import com.example.movieapp.R
 import com.example.movieapp.ui.movieDetails.DetailsViewModel
 import com.example.movieapp.ui.movieDetails.MovieDetailsFragment
+import com.example.movieapp.ui.movieDetails.MovieDetailsRepository
 import com.example.movieapp.utils.Constants.IMAGE_URL_MOVIE
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MovieAdapter(private val movieList: List<Movie>,
                    listener: ItemClickListener,
@@ -41,6 +43,7 @@ class MovieAdapter(private val movieList: List<Movie>,
 
     var listener : ItemClickListener ?= null
     private var movieRepository = MovieRepository.instance
+    private var movieDetailsRepository = MovieDetailsRepository.instance
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
