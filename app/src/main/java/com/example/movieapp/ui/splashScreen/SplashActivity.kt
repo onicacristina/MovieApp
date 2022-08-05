@@ -32,14 +32,17 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
+        setupAnimation()
+        initHandlerToOpenNextActivity()
+    }
+
+    private fun setupAnimation(){
         var imageView = findViewById<ImageView>(R.id.imageSplash)
         var textView = findViewById<TextView>(R.id.tv_splash)
         var top = AnimationUtils.loadAnimation(this, R.anim.top)
         var bottom = AnimationUtils.loadAnimation(this, R.anim.bottom)
-        imageView.setAnimation(top)
-        textView.setAnimation(bottom)
-        initHandlerToOpenNextActivity()
-
+        imageView.animation = top
+        textView.animation = bottom
     }
 
     private fun initHandlerToOpenNextActivity() {
@@ -47,7 +50,6 @@ class SplashActivity : AppCompatActivity() {
         runnable = Runnable {
             openNextScreen()
         }
-
         handler?.postDelayed(runnable!!, DELAY)
     }
 

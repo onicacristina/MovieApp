@@ -23,6 +23,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.math.RoundingMode
+import java.text.DecimalFormat
+import kotlin.math.roundToLong
 
 
 class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
@@ -69,7 +72,7 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
                 genres = movie.genres
                 binding.tvMovieTitle.text = movie.title
                 binding.tvReleaseDate.text = movie.release_date
-                binding.tvVoteAverage.text = movie.vote_average
+                binding.tvVoteAverage.text = movie.vote_average?.let { roundOffDecimal(it.toDouble()) }
                 binding.tvMovieDescription.text = movie.overview
                 if(movie.poster_path != null)
                     Glide.with(binding.ivMoviePhoto.context).load(Constants.IMAGE_URL_MOVIE + movie.poster_path).into(binding.ivMoviePhoto)
@@ -78,6 +81,12 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
                 setupRecyclerView()
             }
         }
+    }
+
+    private fun roundOffDecimal(number: Double): String {
+        val df = DecimalFormat("#.##")
+        df.roundingMode = RoundingMode.CEILING
+        return df.format(number)
     }
 
     private fun setupRecyclerView(){
@@ -91,7 +100,7 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
         binding.ytbVideo.addYouTubePlayerListener(object :
             AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
-                if (movie.videos?.movies?.size!=0)
+                if (movie.videos?.movies?.size != 0)
                 movie.videos?.movies?.get(0)?.let { youTubePlayer.loadVideo(findYoutubeTrailer(movie), 0f) }
             }
         })
