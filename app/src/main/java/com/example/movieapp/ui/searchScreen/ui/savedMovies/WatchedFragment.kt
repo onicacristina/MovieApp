@@ -15,7 +15,7 @@ import kotlinx.coroutines.withContext
 
 class WatchedFragment: Fragment(R.layout.fragment_watched_list) {
 
-    private var movies: List<Movie> = emptyList()
+    private var movies: MutableList<Movie> = mutableListOf()
     private var movieRepository = MovieRepository.instance
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,7 +25,7 @@ class WatchedFragment: Fragment(R.layout.fragment_watched_list) {
 
     private fun getWatchedMovies(view: View){
         GlobalScope.launch (Dispatchers.IO) {
-            movies = movieRepository.getWatchedMovies()
+            movies = movieRepository.getWatchedMovies().toMutableList()
             withContext(Dispatchers.Main){
                 setUpRecyclerView(view)
             }

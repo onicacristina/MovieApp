@@ -16,7 +16,6 @@ class GenresAdapter(private val genresList: List<Genre>) :
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val genreName: TextView = view.findViewById(R.id.tv_name)
         val parentView: ConstraintLayout = view.findViewById(R.id.parent)
-        val starIcon: ImageView = view.findViewById(R.id.star)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

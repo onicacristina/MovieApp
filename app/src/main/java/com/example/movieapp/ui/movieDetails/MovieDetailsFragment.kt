@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
+import com.example.movieapp.databinding.FragmentMovieDetailsBinding
 import com.example.movieapp.ui.genres.Genre
 import com.example.movieapp.utils.Constants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
@@ -24,26 +25,30 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-class MovieDetailsFragment : Fragment() {
+class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
+
+    private var _binding: FragmentMovieDetailsBinding? = null
+    private val binding get() = _binding!!
 
     private val movieDetailsRepository = MovieDetailsRepository.instance
     private lateinit var viewModel: DetailsViewModel
     private var genres : List<Genre> = emptyList()
     private var videos : List<Video> = emptyList()
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movie_details, container, false)
 
+        viewModel= ViewModelProvider(requireActivity())[DetailsViewModel::class.java]
+        _binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,53 +57,53 @@ class MovieDetailsFragment : Fragment() {
         val model = ViewModelProvider(requireActivity())[DetailsViewModel::class.java]
         model.getCurrentMovie().observe(viewLifecycleOwner){ it?.let {
             val id: Int = it.id
-            getMovie(id, view)
+            getMovie(id)
         }
         }
     }
 
-    private fun getMovie(id: Int, view: View){
+    private fun getMovie(id: Int){
         GlobalScope.launch (Dispatchers.IO) {
             var movie = movieDetailsRepository.getMovieDetails(id)
             withContext(Dispatchers.Main){
-                Log.d("TAG", "message " + movie.title)
-                val tvTitle = view.findViewById<TextView>(R.id.tv_movie_title)
-                tvTitle.text = movie.title
-                 val videos : List<Video>? = movie.videos?.movies
+                genres = movie.genres
+                binding.tvMovieTitle.text = movie.title
+                binding.tvReleaseDate.text = movie.release_date
+                binding.tvVoteAverage.text = movie.vote_average
+                binding.tvMovieDescription.text = movie.overview
+                if(movie.poster_path != null)
+                    Glide.with(binding.ivMoviePhoto.context).load(Constants.IMAGE_URL_MOVIE + movie.poster_path).into(binding.ivMoviePhoto)
 
-                val tvDescription = view.findViewById<TextView>(R.id.tv_movie_description)
-                tvDescription.text = movie.overview
-
-                val ivPOster = view.findViewById<ImageView>(R.id.iv_movie_photo)
-                Glide.with(ivPOster.context).load(Constants.IMAGE_URL_MOVIE + movie.poster_path).into(ivPOster)
-                 genres = movie.genres
-
-                val ytbVideo = view.findViewById<YouTubePlayerView>(R.id.ytbVideo)
-
-                lifecycle.addObserver(ytbVideo)
-
-                ytbVideo.addYouTubePlayerListener(object :
-                    AbstractYouTubePlayerListener() {
-                    override fun onReady(youTubePlayer: YouTubePlayer) {
-                        val videoId : String? = videos?.get(0)?.key
-                        youTubePlayer.loadVideo(videoId.toString(), 0f)
-                    }
-                })
-
-                Log.d("TAG", "message key:  " + videos?.get(0)?.key)
-                Log.d("TAG", "message genre:  " + genres[0].name)
-
-
-                setupRecyclerView(view)
+                loadYtbVideos(movie)
+                setupRecyclerView()
             }
         }
-
     }
 
-    private fun setupRecyclerView(view: View){
-        val rvGenresMovie = view.findViewById<RecyclerView>(R.id.rv_genres_movie)
-        rvGenresMovie?.layoutManager=
-            LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
-        rvGenresMovie?.adapter = MovieGenresAdapter(genres)
+    private fun setupRecyclerView(){
+        val rvGenresMovie = binding.rvGenresMovie
+        rvGenresMovie.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rvGenresMovie.adapter = MovieGenresAdapter(genres)
+    }
+
+    private fun loadYtbVideos(movie: MovieDetails){
+        binding.ytbVideo.addYouTubePlayerListener(object :
+            AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                if (movie.videos?.movies?.size!=0)
+                movie.videos?.movies?.get(0)?.let { youTubePlayer.loadVideo(findYoutubeTrailer(movie), 0f) }
+            }
+        })
+    }
+
+    private fun findYoutubeTrailer(movie: MovieDetails) : String {
+        movie?.videos?.movies?.let{ videoList ->
+            for(video in videoList) {
+                if(video.type == "Trailer")
+                    return video.key
+            }
+        }
+        return ""
     }
 }

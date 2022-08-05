@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.splashScreen.SplashScreenActivity">
+    tools:context=".ui.splashScreen.SplashActivity">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:id="@+id/imageSplash"
+        android:layout_width="396dp"
+        android:layout_height="211dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:backgroundTint="@color/white"
@@ -22,15 +22,15 @@
         app:srcCompat="@drawable/logo" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_splash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="@string/splash_title"
-        android:textSize="20sp"
-        android:textStyle="bold"
         android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageSplash" />
 </androidx.constraintlayout.widget.ConstraintLayout>

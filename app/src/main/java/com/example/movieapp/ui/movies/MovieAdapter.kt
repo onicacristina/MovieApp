@@ -41,9 +41,7 @@ class MovieAdapter(private val movieList: List<Movie>,
 
         }
 
-    var listener : ItemClickListener ?= null
     private var movieRepository = MovieRepository.instance
-    private var movieDetailsRepository = MovieDetailsRepository.instance
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -59,8 +57,6 @@ class MovieAdapter(private val movieList: List<Movie>,
         holder.movieDescription.text = movie.overview
         if(movie.backdrop_path!=null)
         Glide.with(holder.moviePhoto.context).load(IMAGE_URL_MOVIE + movie.poster_path).into(holder.moviePhoto)
-
-        val item = getItemId(position)
 
         selectSavedMovie(holder, movie)
         holder.savedMovieIcon.setOnClickListener{

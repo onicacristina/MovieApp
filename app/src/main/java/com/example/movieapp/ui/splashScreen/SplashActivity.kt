@@ -5,7 +5,9 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.WindowManager
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.movieapp.R
 import com.example.movieapp.ui.actors.ActorRepository
@@ -17,7 +19,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-private const val DELAY = 1000L
+private const val DELAY = 2000L
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
@@ -30,7 +32,14 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
+        var imageView = findViewById<ImageView>(R.id.imageSplash)
+        var textView = findViewById<TextView>(R.id.tv_splash)
+        var top = AnimationUtils.loadAnimation(this, R.anim.top)
+        var bottom = AnimationUtils.loadAnimation(this, R.anim.bottom)
+        imageView.setAnimation(top)
+        textView.setAnimation(bottom)
         initHandlerToOpenNextActivity()
+
     }
 
     private fun initHandlerToOpenNextActivity() {

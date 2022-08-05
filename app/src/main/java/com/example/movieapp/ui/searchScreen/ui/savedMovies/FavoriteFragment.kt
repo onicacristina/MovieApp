@@ -16,7 +16,7 @@ import kotlinx.coroutines.withContext
 
 class FavoriteFragment: Fragment(R.layout.fragment_favorite_list) {
 
-    private var movies: List<Movie> = emptyList()
+    private var movies: MutableList<Movie> = mutableListOf()
     private val movieRepository = MovieRepository.instance
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -26,7 +26,7 @@ class FavoriteFragment: Fragment(R.layout.fragment_favorite_list) {
 
     private fun getFavoriteMovies(view: View){
         GlobalScope.launch (Dispatchers.IO) {
-            movies = movieRepository.getSavedMovies()
+            movies = movieRepository.getSavedMovies().toMutableList()
             withContext(Dispatchers.Main){
                 setupRecyclerView(view)
             }

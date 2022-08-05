@@ -6,4 +6,5 @@ object Constants {
     const val LANGUAGE = "en-US"
     const val IMAGE_URL = "https://image.tmdb.org/t/p/w500/"
     const val IMAGE_URL_MOVIE = "https://image.tmdb.org/t/p/h632/"
+    const val APPEND_TO_RESPONSE = "videos"
 }

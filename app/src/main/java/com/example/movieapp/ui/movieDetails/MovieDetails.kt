@@ -34,6 +34,9 @@ data class MovieDetails (
     @ColumnInfo(name = "release_date")
     var release_date: String?,
 
+    @ColumnInfo(name = "vote_average")
+    var vote_average: String?,
+
     var videos: VideoListResponse?,
 
     var genres: List<Genre>,

@@ -14,6 +14,7 @@ class MovieDetailsMapper {
             overview = movieDetailsResponse.overview,
             backdrop_path = movieDetailsResponse.backdrop_path,
             release_date = movieDetailsResponse.release_date,
+            vote_average = movieDetailsResponse.vote_average,
             videos = movieDetailsResponse.videos,
             genres = movieDetailsResponse.genres,
             isSaved = false,

@@ -83,8 +83,6 @@ class SearchMoviesFragment : Fragment(), ItemClickListener{
 
         getParams()
         getSearchedMovieQuery()
-        setOnClickListeners()
-
     }
 
     private fun navigateToDetails(@IdRes destination: Int){
@@ -151,13 +149,6 @@ class SearchMoviesFragment : Fragment(), ItemClickListener{
             {navigateToDetails(R.id.movie_details) }, viewModel)
     }
 
-    private fun setOnClickListeners() {
-        val btnFilter = binding.btnFilter
-        btnFilter.setOnClickListener {
-            val intent = Intent(activity,OnBoardingScreenActivity::class.java)
-            startActivity(intent)
-        }
-    }
 
     override fun onItemClick(position: Long) {
         Log.d("TAG", "message" + position)
